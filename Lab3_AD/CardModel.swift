@@ -1,9 +1,12 @@
-// Lab# 3
-// Group #
+//
+// Lab #3
+// Group #4
 // Ari Lee and David Deng
-// Date: 11-8-25
+// Date: 2025-11-08
+//
 // CardModel.swift
-// 
+// Model for memory card data structure
+//
 
 import Foundation
 

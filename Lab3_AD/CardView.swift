@@ -1,6 +1,6 @@
 //
-// Lab# 3
-// Group #
+// Lab #3
+// Group #4
 // Ari Lee and David Deng
 // Date: 2025-11-07
 //
@@ -17,24 +17,20 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            // Card container
+            // Card container with conditional background color
             RoundedRectangle(cornerRadius: 12)
-                .fill(card.isMatched ? Color.green.opacity(0.18) : Color.white)
+                .fill(card.isMatched ? Color.gray.opacity(0.3) : Color.white)
                 .shadow(radius: 3)
             
             if card.isFaceUp || card.isMatched {
-                // the front
+                // Front of card - shows image
                 Image(card.imageName)
                     .resizable()
                     .scaledToFit()
                     .padding(size * 0.12)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
-                    // when matched, a small animation will be applied
-                    
-                    .scaleEffect(card.isMatched ? 1.05 : 1.0)
-                    .animation(card.isMatched ? .easeInOut(duration: 0.3).repeatCount(1, autoreverses: true) : .default, value: card.isMatched)
             } else {
-                // the back
+                // Back of card - shows pumpkin emoji
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.orange.opacity(0.85))
                     .overlay(
@@ -42,18 +38,40 @@ struct CardView: View {
                             .font(.system(size: size * 0.28))
                     )
             }
+            
+            // Checkmark indicator for matched cards
+            if card.isMatched {
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Image(systemName: "checkmark.circle.fill")
+                            .font(.system(size: size * 0.16))
+                            .foregroundColor(.green)
+                            .background(Circle().fill(Color.white).scaleEffect(1.1))
+                            .padding(6)
+                    }
+                }
+            }
         }
         .frame(minWidth: 0, maxWidth: .infinity, minHeight: size, maxHeight: size)
         .onTapGesture {
-            onTap()
+            // Prevent interaction with matched cards
+            if !card.isMatched {
+                onTap()
+            }
         }
-        // Flip rotate when face down
-        .rotation3DEffect(
-            .degrees(card.isFaceUp || card.isMatched ? 0 : 180),
-            axis: (x: 0.0, y: 1.0, z: 0.0)
+        // Pop animation for card reveal
+        .scaleEffect(card.isMatched ? 1.0 : (card.isFaceUp ? 1.0 : 0.78))
+        .shadow(
+            color: .orange.opacity(card.isFaceUp || card.isMatched ? 0 : 0.2),
+            radius: card.isFaceUp || card.isMatched ? 3 : 6
         )
-        .animation(.easeInOut(duration: 0.33), value: card.isFaceUp)
-        .opacity(card.isMatched ? 0.85 : 1.0)
+        .animation(.interpolatingSpring(stiffness: 120, damping: 6), value: card.isFaceUp)
+        
+        // Visual indicators for disabled (matched) cards
+        .opacity(card.isMatched ? 0.7 : 1.0)
+        .grayscale(card.isMatched ? 0.3 : 0.0)
     }
 }
 

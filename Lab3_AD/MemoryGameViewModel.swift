@@ -1,11 +1,11 @@
 //
-// Lab# 3
-// Group #
-// Your Full Names
-// 11/08/25
+// Lab #3
+// Group #4
+// Ari Lee and David Deng
+// Date: 2025-11-08
 //
 // MemoryGameViewModel.swift
-// ViewModel for the Memory Card Game (MVVM)
+// ViewModel for memory game logic
 //
 
 import Foundation

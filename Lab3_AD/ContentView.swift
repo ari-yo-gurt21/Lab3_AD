@@ -1,10 +1,11 @@
-// David Deng and Ari Lee
-// Lab# 3
-// Group #
-// Your Full Names
-// Made on 11-07-25
+//
+// Lab #3
+// Group #4
+// Ari Lee and David Deng
+// Date: 2025-11-07
+//
 // ContentView.swift
-// Memory Game (MVVM)
+// Main view for memory game interface (MVVM)
 //
 
 import SwiftUI
@@ -45,7 +46,6 @@ struct ContentView: View {
                                 CardView(card: card, size: min(geo.size.width, geo.size.height)) {
                                     vm.flipCard(card)
                                 }
-                               
                                 .scaleEffect(card.isMatched ? 1.02 : 1.0)
                                 .opacity(card.isMatched ? 0.85 : 1.0)
                                 .animation(.spring(response: 0.3, dampingFraction: 0.6), value: card.isMatched)
@@ -58,31 +58,49 @@ struct ContentView: View {
                 }
                 
                 Spacer()
+            }
+            
+            // Game completion overlay
+            if vm.gameCompleted {
+                Color.black.opacity(0.4)
+                    .ignoresSafeArea()
+                    .transition(.opacity)
                 
-                // Play Again button appears only after completion
-                if vm.gameCompleted {
-                    Button(action: {
+                VStack(spacing: 20) {
+                    Text("Congratulations!")
+                        .font(.system(size: 34, weight: .bold, design: .rounded))
+                        .foregroundColor(.black)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("All cards matched!")
+                        .font(.title2)
+                        .foregroundColor(.black.opacity(0.8))
+                    
+                    Button("Play Again") {
                         withAnimation(.spring()) {
                             vm.setupGame()
                         }
-                    }) {
-                        Text("Play Again")
-                            .font(.title2.bold())
-                            .foregroundColor(.white)
-                            .padding(.horizontal, 40)
-                            .padding(.vertical, 15)
-                            .background(Color.orange)
-                            .cornerRadius(25)
-                            .shadow(radius: 5)
                     }
-                    .transition(.asymmetric(insertion: .scale.combined(with: .opacity), removal: .opacity))
-                    .padding(.bottom, 30)
-                    .padding(.top, 6)
+                    .font(.title2.bold())
+                    .foregroundColor(.white)
+                    .padding(.horizontal, 40)
+                    .padding(.vertical, 15)
+                    .background(Color.orange)
+                    .cornerRadius(25)
+                    .shadow(radius: 10)
                 }
+                .padding(30)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                        .shadow(radius: 20)
+                )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.orange, lineWidth: 3)
+                )
+                .transition(.scale.combined(with: .opacity))
             }
-        }
-        .onAppear {
-            
         }
     }
 }
