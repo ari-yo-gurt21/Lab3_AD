@@ -59,7 +59,7 @@
 
 ## Video Presentation
 
-MVVM Architecture: (Please add MVVM video here.)
+MVVM Architecture: ([Please add MVVM video here.](https://youtu.be/BES24oEsVxg?si=Yme7uv76Euk8x2l4))
 
 Transition and Animation:
 [![Lab 3 Video Explanation](https://img.youtube.com/vi/vUFJnuIwk0E/0.jpg)](https://youtube.com/watch?v=vUFJnuIwk0E)
