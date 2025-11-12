@@ -58,7 +58,9 @@
 - **Documentation**: Comprehensive README and code headers
 
 ## Video Presentation
-[Link to your video explanation here]
+
+MVVM Architecture: (Please add MVVM video here.)
+Transition and Animation: [Lab 3 Transition Video](https://youtu.be/vUFJnuIwk0E)
 
 
 ## Image Credits
