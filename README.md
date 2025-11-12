@@ -59,10 +59,11 @@
 
 ## Video Presentation
 
-MVVM Architecture: (](https://youtu.be/BES24oEsVxg?si=Yme7uv76Euk8x2l4)
+[![Lab 3 Architecture Explanation](https://img.youtube.com/vi/BES24oEsVxg/0.jpg)](https://youtube.com/watch?v=BES24oEsVxg)
+- MVVM Architecture
 
-Transition and Animation:
-[![Lab 3 Video Explanation](https://img.youtube.com/vi/vUFJnuIwk0E/0.jpg)](https://youtube.com/watch?v=vUFJnuIwk0E)
+[![Lab 3 Transition Explanation](https://img.youtube.com/vi/vUFJnuIwk0E/0.jpg)](https://youtube.com/watch?v=vUFJnuIwk0E)
+- Transition and Animation
 
 *Click the thumbnail above to watch our video explanation*
 
